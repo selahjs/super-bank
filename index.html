@@ -36,7 +36,7 @@
                     </ul>
                     <form class="d-flex">
                         <div id="logged_member"></div>
-                        <button class="btn btn-outline-dark" type="submit">
+                        <button id="cart-btn" class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="cart-counter badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -64,11 +64,18 @@
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website<span id="year"> 2021</span></p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website <span id="year"></span></p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script src="js/currentYear.js"></script>
+        <script>
+            document.getElementById("cart-btn").onclick = function () {
+                console.log('clicked!')
+                location.href = "cart.html";
+            };
+        </script>
     </body>
 </html>

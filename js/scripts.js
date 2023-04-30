@@ -208,5 +208,3 @@ function welcomeLoggedUser() {
     }
 }
 
-const currentYear = new Date();
-console.log(currentYear.getFullYear());
