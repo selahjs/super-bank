@@ -122,7 +122,7 @@ const loadProducts = () => {
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a id="${'cart_'+product.id}" class="add-cart btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+            <div class="text-center"><a id="${'cart_'+product.id}" class="add-cart btn btn-outline-dark mt-auto" >Add to cart</a></div>
         </div>
     </div>
 </div>`
@@ -204,7 +204,7 @@ welcomeLoggedUser();
 function welcomeLoggedUser() {
     let logged_member = JSON.parse(localStorage.getItem('logged_member'));
     if (logged_member) {
-        document.getElementById('logged_member').innerHTML = `Welcome ${logged_member.name} `;
+        document.getElementById('logged_member').innerHTML = `Welcome ${logged_member.name}`;
     }
 }
 

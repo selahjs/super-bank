@@ -34,13 +34,14 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="features-bugs.html">Features/Bugs</a></li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                    <div class="d-flex">
+                        <div id="logged_member"></div>
+                        <button id="cart-btn" class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="cart-counter badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -60,7 +61,7 @@
                     <ol>
                         <li>Add missing images in the front page</li>
                         <li>Make "Super Bank" to take to index.html on all pages.</li>
-                        <li>--Let all the pages to have the same link on the top</li>
+                        <li>Let all the pages to have the same link on the top</li>
                         <li>Year at the bottom of the pages, on the copyright, is hardcoded. Let's make it 
                             to autoupdate on all years.</li>
                         <li>Highlight the backcolor of row on manage list for those having discount. Use color #B9FAA8</li>
@@ -68,7 +69,7 @@
                             "Update Product". Please change that to say "Update NAME of PRODUCT"
                             So, the car update page says "Updating Car"
                         </li>
-                        <li>Quantity dropdown on product listing is not implemented, implement it.</li>
+                        <li>--Quantity dropdown on product listing is not implemented, implement it.</li>
                         <li>Everytime the user is clicking on add to cart, the page is taken up. Most
                             probably this is due to the link. Maybe change it to corresponding button.
                         </li>
@@ -77,7 +78,7 @@
                             Also logged member's name is displayed on index.html, make it on all.
                         </li>
                         <li>Show total amount for the checkout</li>
-                        <li>When checkout button is clicked, check the member has sufficient fund</li>
+                        <li>--When checkout button is clicked, check the member has sufficient fund</li>
                         <li>On success create new storage that holds, product id, member email, amount and date.
                             Then store this in the storage called orders.
                         </li>
