@@ -94,7 +94,6 @@
             if (logged_member) {
             try{
             let cart = JSON.parse(localStorage.getItem('cart'));
-                console.log('cart ',cart);
                 let cart_content = "";
                 let total = 0;
                 cart.forEach(item => {
@@ -120,7 +119,7 @@
                 //checkout button
                 document.getElementById('btn').addEventListener('click',()=>{
                     //this method is implemented in 
-                    checkfund(total)
+                    checkfund(total, cart, logged_member.email)
                 })
                     }catch(e){
                         window.location.replace('/index.html');
