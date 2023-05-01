@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Super Bank - member registeration</title>
+        <title>Super Bank</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -49,28 +49,16 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Welcome to Our Bank </h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Save More. Get More.</p>
+                    <h1 class="display-4 fw-bolder">Popular Items</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Get Reward for Banking</p>
                 </div>
             </div>
         </header>
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div id="message"></div>
-                <div class="text-center"><a href="/customer.html">I am new customer</a></div>
-                <div id="member_holder" class="row gx-4 gx-lg-5 ">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">email</label>
-                        <input type="text" class="form-control" id="email" placeholder="name@example.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password"/>
-                    </div>
-                    <div class="mb-3 text-center">
-                        <button type="button" class="btn btn-primary" id="login">Login</button>
-                    </div>                    
+                <div id="content_holder" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    
                 </div>
             </div>
         </section>
@@ -81,27 +69,65 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script>
-            //verify if the all values are provided and not empty.
-            let login_handler = () => {
-                let member = {
-                    email: document.getElementById('email').value,
-                    password: document.getElementById('password').value
-                }
-                let logged = authenticateMember(member); //check if the member is found in storage
-                console.log('logged', logged);
-                if (logged) { //member found
-                    localStorage.setItem('logged_member', JSON.stringify(logged));
-                    window.location.replace('/index.html');//redirect
-                } else {
-                    setMessage("Email/password incorrect", false);
-                }
-            }
-            let login = document.getElementById("login").addEventListener(
-                'click', login_handler
-            );
-        </script>
         <script src="js/new-features.js"></script>
+        <script>
+            //get products from storage.
+            const products =JSON.parse(localStorage.getItem("products"));
+
+            //17. load favorire products when the page is loading.
+            const loadFavoriteProducts = () => {
+                let product_cards = "";
+                products.forEach( product => {
+                    if(product.rating > 0){
+                        product_cards += `<div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${product.prevPrice ? "Sale" : ""}</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="${product.productImage}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">${product.productTitle}</h5>`;
+                            if (product.rating> 0) {
+                                    product_cards += `<!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">`;
+        
+                                    product_cards += [...Array(product.rating).keys()].reduce(
+                                        (acc, index) => acc + `<div class="bi-star-fill"></div>`, `<div class="bi-star-fill"></div>`
+                                    );
+                                    
+                                    product_cards += `</div>`;
+                            }
+                            product_cards += `<!-- Product price -->
+                                    <span class="text-muted text-decoration-line-through">
+                                        ${product.prevPrice ? product.prevPrice : ""}
+                                    </span>
+                                    ${product.productPrice}
+                                    <div>
+                                        Quantity: <select>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a id="${'cart_'+product.id}" class="add-cart btn btn-outline-dark mt-auto" >Add to cart</a></div>
+                            </div>
+                        </div>
+                    </div>`
+                    }
+                });
+                document.getElementById("content_holder").innerHTML = product_cards;
+            }
+
+            loadFavoriteProducts();
+        </script>
     </body>
 </html>

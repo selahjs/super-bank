@@ -57,4 +57,16 @@ function checkfund(total,cart,email){
         document.getElementById('checkout').innerHTML = "Insufficient fund!"
     }
 }
+//14. deleteItem from product
+function deleteItem(id,i){
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    //check if the products match
+    if(id === cart[i].product.id){
+        //remove the item from cart
+        cart.splice(i,1);
+        //refresh cart.html to see the new cart
+        window.location.replace("/cart.html");
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }
+}
 welcomeLoggedUser();
