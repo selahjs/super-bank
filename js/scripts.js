@@ -59,7 +59,7 @@ class Product {
 
 let peanut = new Product(6, "Peanuts", 14.05, "/assets/products/peanuts.jpeg");
 peanut.prevPrice = 16.99;
-peanut.setRating(2);
+peanut.setRating(4);
 
 let cart = [];
 
